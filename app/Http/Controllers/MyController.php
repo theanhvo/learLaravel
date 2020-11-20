@@ -31,4 +31,10 @@ class MyController extends Controller
         //     echo "not method get";
         // }
     }
+
+    public function PostForm(Request $request)
+    {
+        echo "Ten cua ban là: ";
+        echo $request->HoTen;
+    }
 }

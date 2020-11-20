@@ -47,3 +47,9 @@ Route::get('GetMyController', 'MyController@XinChao');
 Route::get('tham-so/{ten}', 'MyController@KhoaHoc');
 
 Route::get('my-request', 'MyController@GetUrl');
+
+
+Route::get('getForm', function () {
+    return view('postForm');
+});
+Route::post('postForm', 'MyController@PostForm')->name('postForm');
