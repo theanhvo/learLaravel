@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 
 class MyController extends Controller
 {
@@ -36,5 +38,33 @@ class MyController extends Controller
     {
         echo "Ten cua ban là: ";
         echo $request->HoTen;
+    }
+
+    public function GetCookie(Request $request)
+    {
+        echo "Ho ten cua ban la: ";
+        return $request->cookie('hoten');
+    }
+
+    public function SetCookie(Request $request)
+    {
+        $response = new Response();
+        $response->withCookie(
+            'hoten',
+            'van binh',
+            1
+        );
+        return $response;
+    }
+
+    public function postFile(Request $request)
+    {
+        if ($request->hasFile('myFile')){
+            $file = $request->file('myFile');
+            $file->move('img', 'myFile.jpg');
+        } else {
+            echo "ko co file";
+        }
+        
     }
 }

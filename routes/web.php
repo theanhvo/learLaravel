@@ -53,3 +53,10 @@ Route::get('getForm', function () {
     return view('postForm');
 });
 Route::post('postForm', 'MyController@PostForm')->name('postForm');
+Route::get('getCookie', 'MyController@GetCookie');
+Route::get('setCookie', 'MyController@SetCookie');
+
+Route::get('uploadFile', function () {
+    return view('profile');
+});
+Route::post('postFile', 'MyController@PostFile')->name('postFile');
