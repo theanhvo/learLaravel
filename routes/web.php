@@ -60,3 +60,9 @@ Route::get('uploadFile', function () {
     return view('profile');
 });
 Route::post('postFile', 'MyController@PostFile')->name('postFile');
+
+// JSON
+Route::get('getJson', 'MyController@getJson');
+Route::get('time/{t}', 'MyController@viewTime');
+// blade
+Route::get('khoa-hoc/{str}', 'MyController@blade');

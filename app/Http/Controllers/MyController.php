@@ -67,4 +67,33 @@ class MyController extends Controller
         }
         
     }
+
+    public function getJson(Request $request)
+    {
+        // $array  = ['Laravel', 'php', 'mysql'];
+        $array  = ['Khoa hoc' => 'Laravel'];
+        return response()->json($array);
+    }
+
+    public function myView(Request $request)
+    {
+        
+        return view('myView');
+    }
+
+    public function viewTime($t)
+    {
+        
+        return view('myView', ["time" => $t]);
+    }
+
+    public function blade($str)
+    {
+        $khoahoc1 = "Laravel - anhvt";
+        if ($str == "laravel") {
+            return view("pages.laravel", ['khoahoc1' => $khoahoc1]);
+        } elseif($str == "php") {
+            return view("pages.php", ['khoahoc1' => $khoahoc1]);
+        }
+    }
 }
