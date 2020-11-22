@@ -66,3 +66,86 @@ Route::get('getJson', 'MyController@getJson');
 Route::get('time/{t}', 'MyController@viewTime');
 // blade
 Route::get('khoa-hoc/{str}', 'MyController@blade');
+
+Route::get('qr/db', function () {
+    $data = DB::table('users')->get();
+    foreach($data as $row)
+    {
+        foreach ($row as $key => $value) {
+            echo $key.":".$value."<br>";
+            
+        }
+        echo "<hr>";
+    }
+});
+
+Route::get('qr/update', function () {
+    $data = DB::table('users')->where('id', 5)->update(['name'=>'website']);
+    echo "da update";
+});
+
+
+Route::get('qr/where', function () {
+    $data = DB::table('users')->where('id', '=', 6)->get();
+    foreach($data as $row)
+    {
+        foreach ($row as $key => $value) {
+            echo $key.":".$value."<br>";
+            
+        }
+        echo "<hr>";
+    }
+});
+
+Route::get('qr/select', function () {
+    $data = DB::table('users')->select(['id', 'name', 'email'])->where('id', 5)->get();
+    foreach($data as $row)
+    {
+        foreach ($row as $key => $value) {
+            echo $key.":".$value."<br>";
+            
+        }
+        echo "<hr>";
+    }
+});
+
+Route::get('qr/raw', function () {
+    $data = DB::table('users')->select(DB::raw('id,name as hoten,email'))->where('id', 5)->get();
+    foreach($data as $row)
+    {
+        foreach ($row as $key => $value) {
+            echo $key.":".$value."<br>";
+            
+        }
+        echo "<hr>";
+    }
+});
+
+
+// Route::get('database', function () {
+//     Schema::create('theloai', function($table){
+//         $table->increments('id');
+//         $table->string('ten', 200)->nullable();
+//         $table->string('nsx')->default('Nha san xuat');
+//     });
+//     echo "da tao bang";
+// });
+
+// Route::get('theloai', function () {
+//     Schema::create('theloai', function($table){
+//         $table->increments('id');
+//         $table->string('ten', 200);
+//     });
+//     echo "da tao bang";
+// });
+// Route::get('lieketbang', function () {
+//     Schema::create('sanpham', function($table){
+//         $table->increments('id');
+//         $table->string('ten', 200);
+//         $table->float('gia');
+//         $table->integer('soluong')->default(0);
+//         $table->integer('id_loaisanpham')->unsigned();
+//         $table->foreign('id_loaisanpham')->reference('id')->on('loaisanpham');
+//     });
+//     echo "da tao";
+// });
